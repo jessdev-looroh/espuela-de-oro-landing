@@ -3,8 +3,8 @@ self.__BUILD_MANIFEST = {
     "afterFiles": [],
     "beforeFiles": [
       {
-        "source": "/ESPUELA_DE_ORO_WEB_APP//_next/:path+",
-        "destination": "/ESPUELA_DE_ORO_WEB_APP/_next/:path+"
+        "source": "/espuela-de-oro-landing//_next/:path+",
+        "destination": "/espuela-de-oro-landing/_next/:path+"
       }
     ],
     "fallback": []
