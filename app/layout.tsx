@@ -1,57 +1,140 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Playfair_Display, Inter } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import type React from "react";
+import type { Metadata } from "next";
+import { Playfair_Display, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 import Script from "next/script";
+import { ASSETS } from "@/lib/constants";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-serif",
   display: "swap",
-})
+});
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-})
+});
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mariachiespeueladeoro.com"),
   title: "Mariachi Espuela de Oro | Serenatas en Piura",
   description:
-    "Calidad, Puntualidad y Elegancia. Serenatas para toda ocasión en Piura y alrededores. Reserva tu serenata por WhatsApp.",
-  keywords: "mariachi, serenatas, Piura, música mexicana, eventos, cumpleaños, aniversarios",
-  generator: "v0.app",
+    "Sorprende con una serenata inolvidable en Piura. Mariachi Espuela de Oro – Calidad, Puntualidad y Elegancia.",
+  keywords: [
+    "mariachi",
+    "serenatas",
+    "Piura",
+    "música mexicana",
+    "eventos",
+    "cumpleaños",
+    "aniversarios",
+    "bodas",
+    "serenata romántica",
+    "mariachis Piura",
+  ],
+  authors: [
+    {
+      name: "Mariachi Espuela de Oro",
+      url: "https://mariachiespeueladeoro.com",
+    },
+    {
+      name: "Jess Figueroa - Looroh",
+      url: "https://looroh.com/",
+    },
+  ],
+  creator: "Jess Figueroa",
+  category: "Entertainment",
+  applicationName: "Mariachi Espuela de Oro Piura",
+  referrer: "strict-origin-when-cross-origin",
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
-    icon: [
+    icon: ASSETS.brand.logo_img,
+    shortcut: ASSETS.brand.logo_img,
+    apple: ASSETS.brand.logo_img,
+    other: {
+      rel: "icon",
+      url: ASSETS.brand.logo_img,
+      type: "image/png",
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_PE",
+    url: "https://mariachiespeueladeoro.com",
+    siteName: "Mariachi Espuela de Oro",
+    title: "Mariachi Espuela de Oro | Serenatas Profesionales en Piura",
+    description:
+      "Calidad, Puntualidad y Elegancia. Serenatas para toda ocasión con repertorio a elección.",
+    images: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
+        url: ASSETS.brand.logo_text,
+        width: 1200,
+        height: 630,
+        alt: "Mariachi Espuela de Oro - Serenatas en Piura",
+        type: "image/png",
       },
       {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: ASSETS.brand.logo_img,
+        width: 800,
+        height: 600,
+        alt: "Mariachi Espuela de Oro",
+        type: "image/png",
       },
     ],
-    apple: "/apple-icon.png",
   },
-}
+  twitter: {
+    card: "summary_large_image",
+    title: "Mariachi Espuela de Oro | Serenatas en Piura",
+    description:
+      "Calidad, Puntualidad y Elegancia. Serenatas para toda ocasión.",
+    images: [ASSETS.brand.logo_text],
+    creator: "@mariachiespeueladeoropiura",
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    minimumScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+  other: {
+    "mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
+    "theme-color": "#0a0a0a",
+  },
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   const GA_ID = process.env.NEXT_PUBLIC_GA4_ID;
   return (
     <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
       <head>
-      {GA_ID && (
+        {GA_ID && (
           <>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
@@ -73,5 +156,5 @@ export default function RootLayout({
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
