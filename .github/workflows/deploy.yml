@@ -20,18 +20,17 @@ jobs:
           node-version: 20
           cache: yarn
 
-      - name: Install
+      - name: Install  
         run: yarn install --frozen-lockfile
 
       - name: Build (static export)
-        run: |
-          yarn build
-          yarn export
+        run: yarn build
         env:
           NEXT_PUBLIC_GA4_ID: ${{ secrets.NEXT_PUBLIC_GA4_ID }}
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
+     
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
