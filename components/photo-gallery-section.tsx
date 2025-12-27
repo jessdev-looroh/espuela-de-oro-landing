@@ -6,14 +6,14 @@ import { X } from "lucide-react"
 
 // Mock photo data with placeholders
 const photos = [
-  { id: 1, url: "/assets/gallery-1.jpg", alt: "Presentación nocturna" },
-  { id: 2, url: "/assets/gallery-2.jpg", alt: "Músicos con guitarras" },
-  { id: 3, url: "/assets/gallery-3.jpg", alt: "Serenata romántica" },
-  { id: 4, url: "/assets/gallery-4.jpg", alt: "Trompetista" },
-  { id: 5, url: "/assets/gallery-5.jpg", alt: "Celebración de cumpleaños" },
-  { id: 6, url: "/assets/gallery-6.jpg", alt: "Trajes elegantes" },
-  { id: 7, url: "/assets/gallery-7.jpg", alt: "Presentación en boda" },
-  { id: 8, url: "/assets/gallery-8.jpg", alt: "Violinista" },
+  { id: 1, url: "assets/gallery-1.jpg", alt: "Presentación nocturna" },
+  { id: 2, url: "assets/gallery-2.jpg", alt: "Músicos con guitarras" },
+  { id: 3, url: "assets/gallery-3.jpg", alt: "Serenata romántica" },
+  { id: 4, url: "assets/gallery-4.jpg", alt: "Trompetista" },
+  { id: 5, url: "assets/gallery-5.jpg", alt: "Celebración de cumpleaños" },
+  { id: 6, url: "assets/gallery-6.jpg", alt: "Trajes elegantes" },
+  { id: 7, url: "assets/gallery-7.jpg", alt: "Presentación en boda" },
+  { id: 8, url: "assets/gallery-8.jpg", alt: "Violinista" },
 ]
 
 export function PhotoGallerySection() {

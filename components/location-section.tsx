@@ -1,20 +1,24 @@
-"use client"
+"use client";
 
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { MapPin, Navigation, MessageCircle } from "lucide-react"
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { MapPin, Navigation, MessageCircle } from "lucide-react";
+import { wa } from "@/lib/utils";
 
 export function LocationSection() {
-  const address = "MZ. E LOTE 35 Enace II Etapa Piura"
-  const encodedAddress = encodeURIComponent(address)
+  const address = "MZ. E LOTE 35 Enace II Etapa Piura";
+  const encodedAddress = encodeURIComponent(address);
 
   const handleOpenMap = () => {
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, "_blank")
-  }
+    window.open(
+      `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`,
+      "_blank"
+    );
+  };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/51912614833?text=Hola, me gustaría más información sobre cómo contratar", "_blank")
-  }
+    wa("Hola, me gustaría más información sobre cómo contratar");
+  };
 
   return (
     <section id="ubicacion" className="py-24 relative">
@@ -23,7 +27,8 @@ export function LocationSection() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="font-serif text-4xl sm:text-5xl font-bold text-balance">
-            <span className="text-foreground">Visítanos o</span> <span className="text-primary">Contáctanos</span>
+            <span className="text-foreground">Visítanos o</span>{" "}
+            <span className="text-primary">Contáctanos</span>
           </h2>
           <p className="text-lg text-muted-foreground text-pretty leading-relaxed">
             Estamos en Piura listos para hacer tu evento inolvidable.
@@ -47,7 +52,9 @@ export function LocationSection() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
                 <div>
-                  <p className="font-semibold text-foreground">Nuestra dirección</p>
+                  <p className="font-semibold text-foreground">
+                    Nuestra dirección
+                  </p>
                   <p className="text-muted-foreground text-sm">{address}</p>
                 </div>
               </div>
@@ -71,10 +78,13 @@ export function LocationSection() {
                 </div>
 
                 <div className="space-y-3">
-                  <h3 className="font-serif text-2xl font-bold text-foreground">¿Listo para tu serenata?</h3>
+                  <h3 className="font-serif text-2xl font-bold text-foreground">
+                    ¿Listo para tu serenata?
+                  </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Contáctanos por WhatsApp para coordinar todos los detalles de tu evento especial. Te respondemos
-                    rápido y con toda la información que necesites.
+                    Contáctanos por WhatsApp para coordinar todos los detalles
+                    de tu evento especial. Te respondemos rápido y con toda la
+                    información que necesites.
                   </p>
                 </div>
 
@@ -108,5 +118,5 @@ export function LocationSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

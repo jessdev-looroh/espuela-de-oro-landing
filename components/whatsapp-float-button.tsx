@@ -1,15 +1,16 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { MessageCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import { MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { wa } from "@/lib/utils";
 
 export function WhatsAppFloatButton() {
-  const [showTooltip, setShowTooltip] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const handleClick = () => {
-    window.open("https://wa.me/51912614833?text=Hola, me gustaría cotizar una serenata", "_blank")
-  }
+    wa("Hola, me gustaría cotizar una serenata");
+  };
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
@@ -17,7 +18,9 @@ export function WhatsAppFloatButton() {
         {/* Tooltip */}
         {showTooltip && (
           <div className="absolute bottom-full right-0 mb-2 px-4 py-2 bg-card border border-primary/20 rounded-lg shadow-xl whitespace-nowrap animate-in fade-in slide-in-from-bottom-2">
-            <p className="text-sm font-medium text-foreground">¿Cotizamos tu serenata?</p>
+            <p className="text-sm font-medium text-foreground">
+              ¿Cotizamos tu serenata?
+            </p>
             <div className="absolute -bottom-1 right-4 w-2 h-2 bg-card border-r border-b border-primary/20 rotate-45" />
           </div>
         )}
@@ -38,5 +41,5 @@ export function WhatsAppFloatButton() {
         <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20" />
       </div>
     </div>
-  )
+  );
 }

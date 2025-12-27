@@ -6,10 +6,11 @@ import { Menu, X, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { ASSETS } from "@/lib/constants";
 import { smoothScrollTo, wa } from "@/lib/utils";
+import { gaEvent } from "@/lib/gtag";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+ 
   const navItems = [
     { label: "Servicios", href: "#servicios" },
     { label: "Precios", href: "#precios" },
@@ -21,6 +22,10 @@ export function Header() {
   const onClick = (e: any, section: string) => {
     e.preventDefault();
     smoothScrollTo(`${section}`, 900);
+    gaEvent(`${section}_click`, {
+      event_category: "lead",
+      event_label: `section_${section}`,
+    });
   };
   const handleWhatsApp = () => {
     wa("Hola, me gustaría reservar una serenata");

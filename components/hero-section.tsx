@@ -5,13 +5,11 @@ import { Badge } from "@/components/ui/badge";
 import { MessageCircle, Calendar, Music2, Star } from "lucide-react";
 import { Background } from "./Background";
 import { ASSETS } from "@/lib/constants";
+import { wa } from "@/lib/utils";
 
 export function HeroSection() {
   const handleWhatsApp = () => {
-    window.open(
-      "https://wa.me/51912614833?text=Hola, me gustaría reservar una serenata",
-      "_blank"
-    );
+    wa("Hola, me gustaría reservar una serenata");
   };
 
   const scrollToPricing = () => {
@@ -23,7 +21,7 @@ export function HeroSection() {
       {/* Background Image */}
       <Background src={ASSETS.background.hero} />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 mt-5">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Badges */}
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -79,7 +77,6 @@ export function HeroSection() {
             <Button
               onClick={handleWhatsApp}
               size="lg"
-              
               className=" cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl shadow-primary/30 group px-8 py-6 text-lg"
             >
               <MessageCircle className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
@@ -96,7 +93,7 @@ export function HeroSection() {
           </div>
 
           {/* Trust Indicators */}
-          <div className="pt-8 grid grid-cols-3 gap-4 max-w-2xl mx-auto">
+          <div className="pt-3 pb-3 grid grid-cols-3 gap-4 max-w-2xl mx-auto">
             <div className="text-center space-y-1">
               <div className="text-3xl font-bold text-primary font-serif">
                 20+

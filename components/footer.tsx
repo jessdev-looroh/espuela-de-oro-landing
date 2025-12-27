@@ -2,15 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { ASSETS } from "@/lib/constants";
+import { wa } from "@/lib/utils";
 import { MessageCircle, Facebook, Youtube } from "lucide-react";
 import Image from "next/image";
 
 export function Footer() {
   const handleWhatsApp = () => {
-    window.open(
-      "https://wa.me/51912614833?text=Hola, me gustaría más información",
-      "_blank"
-    );
+    wa("Hola, me gustaría reservar una serenata");
   };
 
   return (

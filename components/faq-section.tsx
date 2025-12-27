@@ -2,34 +2,34 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    question: "¿Cuánto dura una serenata?",
+    question: "¿Cuáles son las opciones de duración disponibles?",
     answer:
-      "Ofrecemos dos opciones: media hora (hasta 6 canciones) por S/ 180, y una hora completa (hasta 12 canciones) por S/ 250. Puedes elegir la duración que mejor se adapte a tu ocasión especial.",
+      "Ofrecemos tres opciones de duración: media hora, 45 minutos y una hora completa. Puedes elegir la duración que mejor se adapte a tu ocasión especial. Los precios se cotizan directamente en WhatsApp según tu selección.",
   },
   {
-    question: "¿Qué incluye el servicio?",
+    question: "¿Cuántos mariachis puedo contratar?",
     answer:
-      "Nuestro servicio incluye presentación elegante con trajes de mariachi, músicos profesionales, instrumentos de calidad, el repertorio acordado, puntualidad garantizada y dedicatoria especial. Todo lo necesario para una experiencia memorable.",
+      "Puedes seleccionar la cantidad de mariachis que desees: 4, 5 o 6 músicos. Cada configuración brinda una experiencia diferente, desde una serenata íntima hasta una presentación más grandiosa. La cotización se realiza en WhatsApp basada en tu elección.",
+  },
+  {
+    question: "¿Qué está incluido en todos nuestros servicios?",
+    answer:
+      "Todos nuestros servicios incluyen: tiempo completo de presentación, músicos elegantemente vestidos con sombreros de mariachi, repertorio a tu elección, puntualidad garantizada, amplificación y movilidad incluida. Una experiencia premium sin sorpresas.",
+  },
+  {
+    question: "¿Cuáles son las zonas de cobertura?",
+    answer:
+      "Cubrimos Piura ciudad (Castilla, 26 de Octubre, Piura centro y más), zonas de alrededores (Paita, Sullana, La Unión, Tambogrande, Catacaos, Curumí) y también realizamos servicios fuera de Piura. Para cualquier ubicación, contáctanos por WhatsApp y te daremos una cotización personalizada.",
   },
   {
     question: "¿Se puede elegir el repertorio?",
     answer:
-      "¡Por supuesto! Puedes elegir las canciones que desees de nuestro amplio repertorio que incluye clásicos mexicanos, románticas, mañanitas, y mucho más. Al momento de reservar, coordinamos contigo el repertorio perfecto para tu ocasión.",
+      "¡Por supuesto! Puedes elegir las canciones que desees de nuestro amplio repertorio que incluye clásicos mexicanos, románticas, mañanitas, y mucho más. Al momento de reservar por WhatsApp, coordinamos contigo el repertorio perfecto para tu ocasión.",
   },
   {
-    question: "¿Qué zonas cubren?",
+    question: "¿Cómo funciona el proceso de reserva?",
     answer:
-      "Cubrimos toda la ciudad de Piura y alrededores, incluyendo Paita, Sullana, Castilla y más. Para destinos fuera de Piura, el precio puede variar según la distancia. Contáctanos por WhatsApp para una cotización personalizada.",
-  },
-  {
-    question: "¿Cómo funciona el adelanto?",
-    answer:
-      "Para asegurar tu fecha, solicitamos un adelanto al momento de la reserva. Este adelanto garantiza la disponibilidad del grupo para tu evento y demuestra el compromiso de ambas partes. El monto restante se paga el día de la presentación.",
-  },
-  {
-    question: "¿Qué pasa si llueve o hay cambios de última hora?",
-    answer:
-      "Entendemos que pueden surgir imprevistos. Si necesitas cambiar la fecha o hay condiciones climáticas adversas, podemos reprogramar tu serenata con previo aviso. Contáctanos lo antes posible y buscaremos la mejor solución juntos.",
+      "Es muy simple: selecciona la duración de la serenata, cantidad de mariachis y zona de cobertura que prefieres. Luego haz clic en 'Cotizar en WhatsApp' y especifica tus datos. Nuestro equipo te contactará con la cotización exacta, opciones de pago y confirmará tu reserva.",
   },
   {
     question: "¿Cuánto tiempo de anticipación debo reservar?",
@@ -37,9 +37,14 @@ const faqs = [
       "Recomendamos reservar con al menos 3-5 días de anticipación para asegurar disponibilidad, especialmente para fechas especiales como San Valentín, Día de las Madres o fin de año. Sin embargo, también manejamos reservas de último momento según disponibilidad.",
   },
   {
+    question: "¿Qué pasa si llueve o hay cambios de última hora?",
+    answer:
+      "Entendemos que pueden surgir imprevistos. Si necesitas cambiar la fecha o hay condiciones climáticas adversas, podemos reprogramar tu serenata con previo aviso. Contáctanos lo antes posible por WhatsApp y buscaremos la mejor solución juntos.",
+  },
+  {
     question: "¿Ofrecen servicios para eventos corporativos?",
     answer:
-      "Sí, tenemos experiencia en eventos corporativos, inauguraciones, cenas empresariales y celebraciones de empresa. Podemos adaptar nuestro repertorio y presentación al tipo de evento. Contáctanos para una cotización especial.",
+      "Sí, tenemos experiencia en eventos corporativos, inauguraciones, cenas empresariales y celebraciones de empresa. Puedes seleccionar el número de mariachis y duración que mejor se adapte a tu evento. Contáctanos por WhatsApp para una cotización especial.",
   },
 ]
 

@@ -12,22 +12,25 @@ import { FAQSection } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
 import { WhatsAppFloatButton } from "@/components/whatsapp-float-button"
 
+import { IncludesSection } from "@/components/including-section"
+import { WhatsAppButton } from "@/components/whatsapp-chat-widget"
+
 export default function Page() {
   return (
     <main className="min-h-screen">
       <Header />
       <HeroSection />
       <ServicesSection />
+      <IncludesSection />
       <HowItWorksSection />
       <PricingSection />
-      <LimitedOfferSection />
       <VideoGallerySection />
       <PhotoGallerySection />
       <ReviewsSection />
       <LocationSection />
       <FAQSection />
       <Footer />
-      <WhatsAppFloatButton />
+      <WhatsAppButton />
     </main>
   )
 }

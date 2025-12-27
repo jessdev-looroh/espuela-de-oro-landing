@@ -1,72 +1,73 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Clock, MessageCircle } from "lucide-react"
+import { useState, useEffect } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Clock, MessageCircle } from "lucide-react";
+import { wa } from "@/lib/utils";
 
 export function LimitedOfferSection() {
-  const [timeLeft, setTimeLeft] = useState<number | null>(null)
-  const [isExpired, setIsExpired] = useState(false)
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
+  const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
     // Check if timer exists in localStorage
-    const storedEndTime = localStorage.getItem("offerEndTime")
-    const now = Date.now()
+    const storedEndTime = localStorage.getItem("offerEndTime");
+    const now = Date.now();
 
-    let endTime: number
+    let endTime: number;
 
     if (storedEndTime) {
-      endTime = Number.parseInt(storedEndTime, 10)
+      endTime = Number.parseInt(storedEndTime, 10);
       if (endTime <= now) {
-        setIsExpired(true)
-        return
+        setIsExpired(true);
+        return;
       }
     } else {
       // Set 24 hours from now
-      endTime = now + 24 * 60 * 60 * 1000
-      localStorage.setItem("offerEndTime", endTime.toString())
+      endTime = now + 24 * 60 * 60 * 1000;
+      localStorage.setItem("offerEndTime", endTime.toString());
     }
 
-    setTimeLeft(Math.floor((endTime - now) / 1000))
+    setTimeLeft(Math.floor((endTime - now) / 1000));
 
     const interval = setInterval(() => {
-      const remaining = Math.floor((endTime - Date.now()) / 1000)
+      const remaining = Math.floor((endTime - Date.now()) / 1000);
 
       if (remaining <= 0) {
-        setIsExpired(true)
-        setTimeLeft(0)
-        clearInterval(interval)
+        setIsExpired(true);
+        setTimeLeft(0);
+        clearInterval(interval);
       } else {
-        setTimeLeft(remaining)
+        setTimeLeft(remaining);
       }
-    }, 1000)
+    }, 1000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   const formatTime = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600)
-    const minutes = Math.floor((seconds % 3600) / 60)
-    const secs = seconds % 60
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
 
     return {
       hours: hours.toString().padStart(2, "0"),
       minutes: minutes.toString().padStart(2, "0"),
       seconds: secs.toString().padStart(2, "0"),
-    }
-  }
+    };
+  };
 
   const handleWhatsApp = () => {
     const message = isExpired
       ? "Hola, me gustaría saber sobre descuentos disponibles"
-      : "Hola, me gustaría aprovechar el descuento del 12%"
-    window.open(`https://wa.me/51912614833?text=${encodeURIComponent(message)}`, "_blank")
-  }
+      : "Hola, me gustaría aprovechar el descuento del 12%";
+    wa(message);
+  };
 
-  if (timeLeft === null) return null
+  if (timeLeft === null) return null;
 
-  const time = formatTime(timeLeft)
+  const time = formatTime(timeLeft);
 
   return (
     <section className="py-16 relative">
@@ -82,7 +83,9 @@ export function LimitedOfferSection() {
                 <>
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30">
                     <Clock className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-semibold text-primary">Oferta por tiempo limitado</span>
+                    <span className="text-sm font-semibold text-primary">
+                      Oferta por tiempo limitado
+                    </span>
                   </div>
 
                   <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-balance">
@@ -91,30 +94,43 @@ export function LimitedOfferSection() {
                   </h2>
 
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    Reserva ahora y ahorra en tu próxima serenata. ¡Oferta válida por 24 horas!
+                    Reserva ahora y ahorra en tu próxima serenata. ¡Oferta
+                    válida por 24 horas!
                   </p>
 
                   {/* Countdown Timer */}
                   <div className="flex items-center justify-center gap-4 py-6">
                     <div className="text-center">
                       <div className="w-20 h-20 md:w-24 md:h-24 rounded-lg bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-lg">
-                        <span className="font-serif text-3xl md:text-4xl font-bold text-primary">{time.hours}</span>
+                        <span className="font-serif text-3xl md:text-4xl font-bold text-primary">
+                          {time.hours}
+                        </span>
                       </div>
-                      <span className="text-xs text-muted-foreground mt-2 block">Horas</span>
+                      <span className="text-xs text-muted-foreground mt-2 block">
+                        Horas
+                      </span>
                     </div>
                     <span className="font-serif text-3xl text-primary">:</span>
                     <div className="text-center">
                       <div className="w-20 h-20 md:w-24 md:h-24 rounded-lg bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-lg">
-                        <span className="font-serif text-3xl md:text-4xl font-bold text-primary">{time.minutes}</span>
+                        <span className="font-serif text-3xl md:text-4xl font-bold text-primary">
+                          {time.minutes}
+                        </span>
                       </div>
-                      <span className="text-xs text-muted-foreground mt-2 block">Minutos</span>
+                      <span className="text-xs text-muted-foreground mt-2 block">
+                        Minutos
+                      </span>
                     </div>
                     <span className="font-serif text-3xl text-primary">:</span>
                     <div className="text-center">
                       <div className="w-20 h-20 md:w-24 md:h-24 rounded-lg bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-lg">
-                        <span className="font-serif text-3xl md:text-4xl font-bold text-primary">{time.seconds}</span>
+                        <span className="font-serif text-3xl md:text-4xl font-bold text-primary">
+                          {time.seconds}
+                        </span>
                       </div>
-                      <span className="text-xs text-muted-foreground mt-2 block">Segundos</span>
+                      <span className="text-xs text-muted-foreground mt-2 block">
+                        Segundos
+                      </span>
                     </div>
                   </div>
 
@@ -130,11 +146,14 @@ export function LimitedOfferSection() {
               ) : (
                 <>
                   <h2 className="font-serif text-3xl sm:text-4xl font-bold text-balance">
-                    <span className="text-muted-foreground">La oferta terminó</span>
+                    <span className="text-muted-foreground">
+                      La oferta terminó
+                    </span>
                   </h2>
 
                   <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    ¡Pero no te preocupes! Consulta con nosotros por descuentos disponibles.
+                    ¡Pero no te preocupes! Consulta con nosotros por descuentos
+                    disponibles.
                   </p>
 
                   <Button
@@ -152,5 +171,5 @@ export function LimitedOfferSection() {
         </Card>
       </div>
     </section>
-  )
+  );
 }

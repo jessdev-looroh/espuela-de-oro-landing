@@ -3,45 +3,79 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Check, MapPin, MessageCircle } from "lucide-react";
+import { Clock, Users, Check, MapPin, MessageCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { wa } from "@/lib/utils";
 
-const pricingPlans = [
+const serviceOptions = [
   {
     duration: "Media Hora",
-    price: "S/ 190",
+    durationMinutes: "30 min",
+    description: "Perfecta para sorpresas rápidas",
     icon: Clock,
-    features: [
-      "Hasta 6 canciones",
-      "4 Integrantes",
-      "Presentación elegante",
-      "Repertorio a elección",
-      "Puntualidad garantizada",
-      "Amplificación",
-      "Movilidad",
-    ],
-    popular: false,
+  },
+  {
+    duration: "45 Minutos",
+    durationMinutes: "45 min",
+    description: "Duración ideal para celebraciones",
+    icon: Clock,
   },
   {
     duration: "Una Hora",
-    price: "S/ 250",
+    durationMinutes: "60 min",
+    description: "Presentación completa y dedicada",
     icon: Clock,
-    features: [
-      "Hasta 12 canciones",
-      "4 Integrantes",
-      "Presentación completa",
-      "Repertorio personalizado",
-      "Puntualidad garantizada",
-      "Dedicatoria especial",
-      "Amplificación",
-      "Movilidad",
+  },
+];
+
+const musicianOptions = [
+  {
+    count: 4,
+    description: "Serenata clásica",
+    icon: Users,
+  },
+  {
+    count: 5,
+    description: "Grupo estándar",
+    icon: Users,
+  },
+  {
+    count: 6,
+    description: "Sonido pleno",
+    icon: Users,
+  },
+];
+
+const zoneOptions = [
+  {
+    name: "Piura Ciudad",
+    locations: ["Castilla", "26 de Octubre", "Piura Centro"],
+    icon: MapPin,
+  },
+  {
+    name: "Zona de Alrededores",
+    locations: [
+      "Paita",
+      "Sullana",
+      "La Unión",
+      "Tambogrande",
+      "Catacaos",
+      "Curumí",
     ],
-    popular: true,
+    icon: MapPin,
+  },
+  {
+    name: "Fuera de Piura",
+    locations: ["Otra provincia o región"],
+    icon: MapPin,
   },
 ];
 
 export function PricingSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedDuration, setSelectedDuration] = useState("Media Hora");
+  const [selectedMusicians, setSelectedMusicians] = useState(4);
+  const [selectedZone, setSelectedZone] = useState("Piura Ciudad");
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -61,21 +95,9 @@ export function PricingSection() {
     return () => observer.disconnect();
   }, []);
 
-  const handleWhatsApp = (duration: string) => {
-    const message = `Hola, me gustaría reservar una serenata de ${duration}`;
-    window.open(
-      `https://wa.me/51912614833?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
-  };
-
-  const handleOutsideQuote = () => {
-    const message =
-      "Hola, necesito una cotización para una serenata fuera de Piura";
-    window.open(
-      `https://wa.me/51912614833?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
+  const handleWhatsApp = () => {
+    const message = `Hola, me gustaría cotizar una serenata de ${selectedDuration} con ${selectedMusicians} mariachis para ${selectedZone}`;
+    wa(message);
   };
 
   return (
@@ -96,94 +118,142 @@ export function PricingSection() {
       >
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="font-serif text-4xl sm:text-5xl font-bold text-balance">
-            <span className="text-foreground">Precios</span>{" "}
-            <span className="text-primary">Transparentes</span>
+            <span className="text-foreground">Nuestros</span>{" "}
+            <span className="text-primary">Servicios</span>
           </h2>
           <p className="text-lg text-muted-foreground text-pretty leading-relaxed">
-            Calidad premium a precios justos. Elige la duración perfecta para tu
-            ocasión.
+            Elige la duración y cantidad de mariachis que mejor se adapte a tu
+            celebración. Los precios se cotizarán directamente en WhatsApp según
+            tus necesidades.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
-          {pricingPlans.map((plan, index) => (
-            <Card
-              key={index}
-              className={`relative bg-card/50 backdrop-blur-sm p-8 transition-all duration-300 ${
-                plan.popular
-                  ? "border-primary shadow-xl shadow-primary/20 scale-105"
-                  : "border-primary/20 hover:border-primary/40"
-              }`}
-            >
-              {plan.popular && (
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1">
-                  Más Popular
-                </Badge>
-              )}
-
-              <div className="space-y-6">
-                <div className="text-center space-y-2">
-                  <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                    <plan.icon className="w-8 h-8 text-primary shrink-0 mt-0.5" />
-                  </div>
-                  <h3 className="font-serif text-2xl font-bold text-foreground">
-                    {plan.duration}
-                  </h3>
-                  <div className="flex items-baseline justify-center gap-1">
-                    <span className="font-serif text-5xl font-bold text-primary">
-                      {plan.price}
-                    </span>
-                  </div>
-                </div>
-
-                <ul className="space-y-3">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Button
-                  onClick={() => handleWhatsApp(plan.duration)}
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20"
-                  size="lg"
+        <div className="max-w-4xl mx-auto space-y-12">
+          {/* Duration Options */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-foreground ml-2">
+              Duración de la serenata
+            </h3>
+            <div className="grid md:grid-cols-3 gap-4">
+              {serviceOptions.map((option) => (
+                <Card
+                  key={option.duration}
+                  onClick={() => setSelectedDuration(option.duration)}
+                  className={`p-6 cursor-pointer transition-all duration-300 ${
+                    selectedDuration === option.duration
+                      ? "border-primary bg-primary/10 shadow-lg shadow-primary/30"
+                      : "border-primary/20 bg-card/50 hover:border-primary/40"
+                  }`}
                 >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Reservar este tiempo
-                </Button>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        {/* Outside Piura CTA */}
-        <Card className="max-w-3xl mx-auto bg-gradient-to-r from-secondary/20 to-primary/20 border-primary/30 p-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-start gap-4 text-left">
-              <MapPin className="w-8 h-8 text-primary shrink-0" />
-              <div className="space-y-2">
-                <h3 className="font-serif text-xl font-bold text-foreground">
-                  ¿Fuera de Piura?
-                </h3>
-                <p className="text-muted-foreground">
-                  Cubrimos Paita, Sullana y más. Cotización rápida por WhatsApp
-                  según destino.
-                </p>
-              </div>
+                  <div className="space-y-3">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                      <option.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif text-lg font-bold text-foreground">
+                        {option.duration}
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        {option.durationMinutes}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-2 italic">
+                        {option.description}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              ))}
             </div>
+          </div>
+
+          {/* Musician Count Options */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-foreground ml-2">
+              Cantidad de mariachis
+            </h3>
+            <div className="grid md:grid-cols-3 gap-4">
+              {musicianOptions.map((option) => (
+                <Card
+                  key={option.count}
+                  onClick={() => setSelectedMusicians(option.count)}
+                  className={`p-6 cursor-pointer transition-all duration-300 ${
+                    selectedMusicians === option.count
+                      ? "border-primary bg-primary/10 shadow-lg shadow-primary/30"
+                      : "border-primary/20 bg-card/50 hover:border-primary/40"
+                  }`}
+                >
+                  <div className="space-y-3">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                      <option.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif text-lg font-bold text-foreground">
+                        {option.count} Mariachis
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        {option.description}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold text-foreground ml-2">
+              Zona de cobertura
+            </h3>
+            <div className="grid md:grid-cols-3 gap-4">
+              {zoneOptions.map((option) => (
+                <Card
+                  key={option.name}
+                  onClick={() => setSelectedZone(option.name)}
+                  className={`p-6 cursor-pointer transition-all duration-300 ${
+                    selectedZone === option.name
+                      ? "border-primary bg-primary/10 shadow-lg shadow-primary/30"
+                      : "border-primary/20 bg-card/50 hover:border-primary/40"
+                  }`}
+                >
+                  <div className="space-y-3">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                      <option.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-serif text-lg font-bold text-foreground">
+                        {option.name}
+                      </h4>
+                      <p className="text-xs text-muted-foreground mt-2">
+                        {option.locations.join(", ")}
+                      </p>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </div>
+          {/* Call to Action */}
+          <div className="bg-gradient-to-r from-primary/20 to-secondary/20 border border-primary/30 rounded-lg p-8 text-center space-y-4">
+            <h3 className="font-serif text-2xl font-bold text-foreground">
+              Solicita tu Cotización
+            </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              {selectedDuration} con {selectedMusicians} mariachis •{" "}
+              {selectedZone}
+            </p>
             <Button
-              onClick={handleOutsideQuote}
-              variant="outline"
-              className="border-primary hover:bg-primary/10 shrink-0 bg-transparent"
+              onClick={handleWhatsApp}
+              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20"
               size="lg"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              Cotizar ahora
+              Cotizar en WhatsApp
             </Button>
+            <p className="text-sm text-muted-foreground italic">
+              Responderemos en menos de 1 hora con presupuesto y disponibilidad
+            </p>
           </div>
-        </Card>
+        </div>
 
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground italic">

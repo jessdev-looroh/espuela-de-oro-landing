@@ -1,5 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { CONTACT_INFO } from "./constants";
+import { gaEvent } from "./gtag";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -33,6 +35,15 @@ export const smoothScrollTo = (targetId: string, duration = 800) => {
   requestAnimationFrame(animation);
 };
 
-const WHATSAPP_NUMBER = "51912614833";
-export const wa = (msg: string) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+export const wa = (msg: string) => {
+  gaEvent("whatsapp_click", {
+    event_category: "lead",
+    event_label: "cta_whatsapp",
+  });
+  window.open(
+    `https://wa.me/${CONTACT_INFO.brand.phone_number}?text=${encodeURIComponent(
+      msg
+    )}`,
+    "_blank"
+  );
+};
