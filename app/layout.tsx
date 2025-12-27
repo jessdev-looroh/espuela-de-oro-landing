@@ -19,7 +19,6 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mariachiespeueladeoro.com"),
   title: "Mariachi Espuela de Oro | Serenatas en Piura",
   description:
     "Sorprende con una serenata inolvidable en Piura. Mariachi Espuela de Oro – Calidad, Puntualidad y Elegancia.",
@@ -35,6 +34,7 @@ export const metadata: Metadata = {
     "serenata romántica",
     "mariachis Piura",
   ],
+  metadataBase: new URL("https://mariachiespeueladeoro.com"),
   authors: [
     {
       name: "Mariachi Espuela de Oro",
@@ -72,29 +72,29 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    type: "website",
-    locale: "es_PE",
-    url: "https://mariachiespeueladeoro.com",
-    siteName: "Mariachi Espuela de Oro",
     title: "Mariachi Espuela de Oro | Serenatas Profesionales en Piura",
     description:
       "Calidad, Puntualidad y Elegancia. Serenatas para toda ocasión con repertorio a elección.",
+    url: "https://mariachiespeueladeoro.com",
+    siteName: "Mariachi Espuela de Oro Piura",
     images: [
       {
-        url: ASSETS.brand.logo_text,
+        url: ASSETS.brand.preview,
         width: 1200,
         height: 630,
         alt: "Mariachi Espuela de Oro - Serenatas en Piura",
         type: "image/png",
       },
       {
-        url: ASSETS.brand.logo_img,
+        url: ASSETS.brand.preview,
         width: 800,
         height: 600,
         alt: "Mariachi Espuela de Oro",
         type: "image/png",
       },
     ],
+    type: "website",
+    locale: "es_PE",
   },
   twitter: {
     card: "summary_large_image",
