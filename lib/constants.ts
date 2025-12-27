@@ -6,6 +6,7 @@ export const ASSETS = {
     logo_img: "assets/logo_img.png",
     logo_text: "assets/logo_text_rect.png",
     preview: "assets/preview_mariachi.png",
+    icon: "assets/trompeta.png",
   },
   redes: {
     whatsapp: "assets/redes/whatsapp.png",

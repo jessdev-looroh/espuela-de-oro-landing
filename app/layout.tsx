@@ -62,12 +62,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: ASSETS.brand.logo_img,
-    shortcut: ASSETS.brand.logo_img,
-    apple: ASSETS.brand.logo_img,
+    icon: ASSETS.brand.icon,
+    shortcut: ASSETS.brand.icon,
+    apple: ASSETS.brand.icon,
     other: {
       rel: "icon",
-      url: ASSETS.brand.logo_img,
+      url: ASSETS.brand.icon,
       type: "image/png",
     },
   },
