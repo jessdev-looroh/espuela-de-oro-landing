@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "Mariachi Espuela de Oro Piura",
     images: [
       {
-        url: ASSETS.brand.preview,
+        url: `/${ASSETS.brand.preview}`,
         width: 1200,
         height: 630,
       },
