@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "export": "next export",
+    "dev": "next dev",
+    "lint": "eslint .",
+    "start": "next start",
     "deploy": "gh-pages -d out --dotfiles --nojekyll"
   },
   "dependencies": {
