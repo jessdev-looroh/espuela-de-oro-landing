@@ -18,6 +18,6 @@ export const ASSETS = {
 
 export const CONTACT_INFO = {
   brand: {
-    phone_number: "51934234269",
+    phone_number: "51968009750",
   },
 };
