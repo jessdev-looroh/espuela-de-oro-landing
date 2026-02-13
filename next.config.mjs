@@ -1,9 +1,4 @@
-const nextConfig = {
-  output: "export", // export estático
-  trailingSlash: true,
-  images: {
-    unoptimized: true, // GitHub Pages no tiene el optimizador de next/image
-  },
-};
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
 
-export default nextConfig;
+export default nextConfig; 
