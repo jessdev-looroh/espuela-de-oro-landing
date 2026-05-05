@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Navigation, MessageCircle } from "lucide-react";
 import { wa } from "@/lib/utils";
+import { CONTACT_INFO } from "@/lib/constants";
 
 export function LocationSection() {
   const address = "MZ. E LOTE 35 Enace II Etapa Piura";
@@ -91,7 +92,7 @@ export function LocationSection() {
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-foreground">
                     <span className="font-semibold">WhatsApp:</span>
-                    <span className="text-primary">+51 912 614 833</span>
+                    <span className="text-primary">+{CONTACT_INFO.brand.phone_number}</span>
                   </div>
                   <div className="flex items-center gap-2 text-foreground">
                     <span className="font-semibold">Cobertura:</span>

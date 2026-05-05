@@ -57,7 +57,7 @@ export function VideoGallerySection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 relative overflow-hidden">
+    <section ref={sectionRef} id="presentaciones" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-dark-1)] via-[var(--bg-dark-2)] to-[var(--bg-dark-1)]" />
 
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
